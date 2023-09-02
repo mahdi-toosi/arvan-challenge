@@ -1,0 +1,128 @@
+@import 'nprogress/nprogress.css';
+@import 'vue-sidebar-menu/dist/vue-sidebar-menu.css';
+
+body {
+	@apply w-screen overflow-x-hidden;
+}
+
+:root {
+	--text-color: #192e59;
+}
+
+/*  * scrollbar styles  */
+*::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+	background-color: transparent;
+}
+
+*::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background-color: rgb(236 236 236);
+}
+
+*::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #4d4d4d;
+}
+
+/*  * END scrollbar styles  */
+
+/*  * remove number arrows on input */
+.r_remove_spin_btns::-webkit-outer-spin-button,
+.r_remove_spin_btns::-webkit-inner-spin-button {
+	appearance: none !important;
+	margin: 0 !important;
+}
+
+.r_remove_spin_btns {
+	appearance: textfield !important;
+}
+
+/* *  END remove number arrows on input */
+
+/* * nprogress */
+#nprogress .spinner {
+	display: none;
+}
+
+#nprogress .bar {
+	background: #22dda9;
+}
+/* * END nprogress */
+
+/* * generic prime table */
+.r_th_center .p-column-title,
+.r_th_center .p-column-header-content {
+	@apply text-center w-full;
+}
+
+.p-datatable .r_index_column {
+	@apply text-center w-12 !important;
+}
+
+.p-datatable .r_index_column .p-column-title,
+.p-datatable .r_index_column .p-column-header-content {
+	@apply text-center w-full;
+}
+
+td {
+	white-space: nowrap;
+}
+th {
+	white-space: nowrap;
+}
+
+.p-datatable .p-datatable-loading-overlay p {
+	@apply rounded-md;
+
+	background-color: #b1b1b1;
+	padding: 4px 8px;
+	animation: fade 1.5s ease-in-out infinite;
+}
+
+@keyframes fade {
+	0% {
+		background-color: #b1b1b1; /* Dim */
+	}
+	50% {
+		background-color: #cfcfcf; /* Bold */
+	}
+	100% {
+		background-color: #b1b1b1; /* Dim */
+	}
+}
+
+:has(.p-datatable .p-datatable-loading-overlay) .p-datatable .p-datatable-emptymessage {
+	display: none !important;
+}
+
+@media (max-width: 768px) {
+	.p-datatable .p-paginator-current {
+		@apply w-full;
+	}
+}
+/* * END generic prime table */
+
+/* * generic prime Button */
+.p-button {
+	@apply whitespace-nowrap;
+}
+
+.p-disabled,
+.p-disabled *,
+[disabled='true'] {
+	@apply cursor-not-allowed pointer-events-auto !important;
+}
+
+button[type='submit'] {
+	min-width: 8rem;
+}
+
+/* * START generic prime Split button */
+.p-tieredmenu .p-menuitem-text,
+.p-menuitem-link {
+	@apply whitespace-nowrap text-sm;
+}
+
+/* * END generic prime Split button  */

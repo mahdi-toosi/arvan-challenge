@@ -1,0 +1,12 @@
+{
+	"recommendations": [
+		"vue.volar",
+		"gruntfuggly.todo-tree",
+		"esbenp.prettier-vscode",
+		"dbaeumer.vscode-eslint",
+		"bradlc.vscode-tailwindcss",
+		"aaron-bond.better-comments",
+		"streetsidesoftware.code-spell-checker",
+		"streetsidesoftware.code-spell-checker-persian"
+	]
+}

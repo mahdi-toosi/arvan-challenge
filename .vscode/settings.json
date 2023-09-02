@@ -1,0 +1,15 @@
+{
+	"stylelint.validate": ["vue"],
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"[vue]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"cSpell.words": ["arvan", "nprogress", "tailwindcss"],
+	"cSpell.language": "en,fa"
+}

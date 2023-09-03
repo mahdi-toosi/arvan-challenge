@@ -2,7 +2,6 @@
 import { createApp } from 'vue'
 import router, { registerRoutes } from './router'
 // ? prime
-import Tooltip from 'primevue/tooltip'
 import PrimeVue from 'primevue/config'
 import ToastService from 'primevue/toastservice'
 import ConfirmationService from 'primevue/confirmationservice'
@@ -31,12 +30,7 @@ async function init() {
 
 	registerRoutes(context.Router.routes)
 
-	app
-		.use(router)
-		.use(PrimeVue, { ripple: true })
-		.use(ToastService)
-		.use(ConfirmationService)
-		.directive('tooltip', Tooltip)
+	app.use(router).use(PrimeVue).use(ToastService).use(ConfirmationService)
 
 	app.mount('#app')
 }

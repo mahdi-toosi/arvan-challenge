@@ -27,7 +27,7 @@ const model = defineModel<any>()
 
 <template>
 	<div class="app_input">
-		<AppLabel :label="label" :required="required" />
+		<AppLabel :label="label" :required="required" :invalid="errors?.length" />
 
 		<span :class="['w-full', { 'p-input-icon-right': icon }]">
 			<i :class="icon"></i>

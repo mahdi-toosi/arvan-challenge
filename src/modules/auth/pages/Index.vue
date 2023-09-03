@@ -4,21 +4,23 @@ defineComponent({ name: 'Auth' })
 </script>
 
 <template>
-	<div class="__login_register_wrapper">
-		<section class="__login_register_box">
-			<router-view></router-view>
+	<div class="__auth_wrapper">
+		<section class="__auth_box">
+			<router-view />
 		</section>
 	</div>
 </template>
 
 <style>
-.__login_register_wrapper {
+.__auth_wrapper {
 	@apply flex justify-center items-center w-full py-4 h-screen;
 }
 
-.__login_register_box {
-	@apply flex m-auto flex-col md:flex-row rounded-3xl overflow-hidden px-4 md:px-8 py-10 bg-white;
+.__auth_box {
+	@apply rounded;
 
-	box-shadow: 0 4px 25px 0 rgb(0 0 0 / 10%);
+	width: 450px;
+	padding: 37px 20px 20px;
+	background-color: #eceeef;
 }
 </style>

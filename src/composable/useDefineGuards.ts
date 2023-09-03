@@ -9,7 +9,7 @@ const hasToken = ref(false)
 
 function authGuard(to: RouteLocationNormalized, next: NavigationGuardNext): void {
 	const authenticationPages = ['auth', 'login', 'register']
-
+	return next()
 	if (to.meta.guest) {
 		if (localStorage.getItem('token') && authenticationPages.includes(to.name as string))
 			return next({ name: 'Dashboard' })
@@ -33,7 +33,6 @@ export async function beforeEach(
 	next: NavigationGuardNext
 ) {
 	return globalStartupGuard(to).then(() => authGuard(to, next))
-	// .catch(() => NProgress.done())
 }
 
 export function afterEach(to: RouteLocationNormalized) {

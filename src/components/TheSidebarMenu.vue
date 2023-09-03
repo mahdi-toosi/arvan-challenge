@@ -40,15 +40,10 @@ onMounted(() => {
 		@item-click="onItemClicked"
 		@update:collapsed="onSidebarCollapsed"
 	>
-		<template v-if="windowWidth < 640" #header>
-			<div class="flex items-center mt-8">
-				<h3 class="mr-4"></h3>
+		<template #header>
+			<div class="__sidebar_header">
+				<h3>Post</h3>
 			</div>
-
-			<hr
-				style="margin-left: 0.75rem !important; margin-right: 0.75rem !important"
-				class="mt-4 mb-2"
-			/>
 		</template>
 
 		<template #toggle-icon>
@@ -62,12 +57,25 @@ onMounted(() => {
 <style scoped>
 .__sidebar {
 	@apply shadow;
+	background: #1c7cd5;
 
 	z-index: 20;
 }
 
 .__sidebar_mask {
-	@apply fixed w-screen h-screen md:hidden z-10;
+	@apply fixed w-screen h-screen md:hidden;
+
+	z-index: 10;
+}
+
+.__sidebar_header {
+	@apply my-4  text-white;
+
+	margin-left: 1.25rem;
+}
+
+.__sidebar_header h3 {
+	@apply text-xl;
 }
 
 :deep(.vsm--link_active[aria-current='page']) {
@@ -75,16 +83,18 @@ onMounted(() => {
 }
 
 :deep(.vsm--title) {
-	@apply text-sm;
+	@apply text-lg text-white;
+	margin-left: 1.25rem;
+}
+
+:deep(.vsm--link_hover) {
+	background-color: rgba(255, 255, 255, 0.15) !important;
 }
 
 .v-sidebar-menu {
 	@apply h-screen;
 
-	border-bottom-left-radius: 1rem !important;
-	border-top-left-radius: 1rem !important;
-	max-height: calc(100vh - 6rem) !important; /* reduce header */
-	top: 5rem !important;
+	max-height: calc(100vh - 64px) !important; /* reduce header */
 }
 
 .v-sidebar-menu.vsm_collapsed {
@@ -93,8 +103,7 @@ onMounted(() => {
 }
 
 :deep(.vsm--toggle-btn) {
-	border-bottom-left-radius: 1rem !important;
-	height: 2.75rem !important;
+	@apply hidden;
 }
 
 :deep(.vsm--arrow_default::before) {

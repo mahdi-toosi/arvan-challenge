@@ -5,6 +5,9 @@ export default {
 	content: ['./public/**/*.html', './index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
 	theme: {
 		extend: {
+			fontSize: {
+				xl: '1.375rem',
+			},
 			colors: {
 				Red: '#d9534f',
 				Blue: '#1c7cd5',

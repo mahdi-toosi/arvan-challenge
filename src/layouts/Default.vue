@@ -4,7 +4,6 @@ import useStoreTheme from '@/modules/dashboard/composable/useStoreTheme'
 // ? components
 import TheHeader from '@/components/TheHeader.vue'
 import TheSidebarMenu from '@/components/TheSidebarMenu.vue'
-// ? types
 
 const { sidebarIsCollapsed } = useStoreTheme()
 </script>
@@ -29,16 +28,16 @@ const { sidebarIsCollapsed } = useStoreTheme()
 
 <style scoped>
 .__content_wrapper {
-	max-height: calc(100vh - 5.5rem); /* reduce header */
+	max-height: calc(100vh - 64px); /* reduce header */
 	width: 100vw;
 	scroll-behavior: smooth;
 }
 
 .__content {
-	@apply p-2 md:mr-4 md:ml-2 md:p-6 bg-white rounded-lg;
+	@apply p-2 md:px-8 md:py-6 bg-white;
 
 	box-shadow: 0 4px 20px 0 rgb(0 0 0 / 5%);
-	min-height: calc(100vh - 6rem);
+	min-height: calc(100vh - 64px);
 }
 
 @media (min-width: 640px) {

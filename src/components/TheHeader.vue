@@ -14,7 +14,7 @@ function onLogout() {
 
 <template>
 	<header class="__header">
-		<div class="flex items-center gap-4">
+		<div class="flex items-center gap-5">
 			<Button
 				class="md:hidden"
 				severity="secondary"
@@ -22,7 +22,9 @@ function onLogout() {
 				:icon="`pi pi-${sidebarIsCollapsed ? 'bars' : 'times'}`"
 				@click="onSidebarCollapsed(!sidebarIsCollapsed)"
 			/>
+
 			<h3>Arvan Challenge</h3>
+
 			<h4>Welcome {{ user.first_name }} {{ user.last_name }}</h4>
 		</div>
 
@@ -32,9 +34,13 @@ function onLogout() {
 
 <style scoped>
 .__header {
-	@apply px-4 py-8 h-14 text-white bg-CharcoalGrey flex items-center justify-between relative mb-4;
+	@apply px-4 py-8 h-14 text-white bg-CharcoalGrey flex items-center justify-between relative;
 
 	box-shadow: 0 4px 20px 0 rgb(0 0 0 / 5%);
+}
+
+h3 {
+	@apply text-xl;
 }
 
 @media print {

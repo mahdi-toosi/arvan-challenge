@@ -47,7 +47,7 @@ body {
 }
 
 #nprogress .bar {
-	background: #22dda9;
+	@apply bg-CharcoalGrey;
 }
 /* * END nprogress */
 

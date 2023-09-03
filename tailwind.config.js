@@ -9,11 +9,12 @@ export default {
 				Red: '#d9534f',
 				Blue: '#1c7cd5',
 				Green: '#5cb85c',
+				warmGrey: '#707070',
 				CharcoalGrey: '#373a3c',
 			},
 		},
 		fontFamily: {
-			sans: ['HelveticaNeue', ...defaultTheme.fontFamily.sans],
+			sans: ['Roboto', ...defaultTheme.fontFamily.sans],
 		},
 	},
 }

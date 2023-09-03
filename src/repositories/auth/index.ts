@@ -1,9 +1,8 @@
-import { VERSION_1 } from '../version'
 import type { AxiosInstance } from 'axios'
 import type { RAuth } from './types'
 export type { RAuth }
 
-const authService = VERSION_1 + '/auth'
+const authService = '/auth'
 
 export default (axios: AxiosInstance): RAuth => ({
 	login(payload) {

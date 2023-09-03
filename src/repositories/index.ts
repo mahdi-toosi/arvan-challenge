@@ -5,6 +5,7 @@ import type { AxiosInstance } from 'axios'
 
 import auth, { type RAuth } from './auth'
 import users, { type RUsers } from './users'
+import articles, { type RArticles } from './articles'
 
 function lazyBind<T>(repoFactory: any, repoInterface: T, axios: AxiosInstance) {
 	return {
@@ -28,6 +29,9 @@ export default function repositoryContainer(axios: AxiosInstance) {
 		},
 		get users() {
 			return lazyBind<RUsers>(() => import('./users'), users(axios), axios)
+		},
+		get articles() {
+			return lazyBind<RArticles>(() => import('./articles'), articles(axios), axios)
 		},
 	}
 }

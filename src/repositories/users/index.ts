@@ -1,10 +1,9 @@
-import { VERSION_1 } from '../version'
 import type { AxiosInstance } from 'axios'
 import type { RUsers } from './types'
 export type { RUsers }
 
-const rolesService = VERSION_1 + '/roles'
-const usersService = VERSION_1 + '/users'
+const rolesService = '/roles'
+const usersService = '/users'
 
 export default (axios: AxiosInstance): RUsers => ({
 	getUsers(payload) {
@@ -31,7 +30,7 @@ export default (axios: AxiosInstance): RUsers => ({
 	},
 
 	getRoles(id) {
-		return axios.get(`${VERSION_1}/users/${id}/roles`)
+		return axios.get(`/users/${id}/roles`)
 	},
 	getAllRoles() {
 		return axios.get(rolesService)
@@ -40,6 +39,6 @@ export default (axios: AxiosInstance): RUsers => ({
 		return axios.post(rolesService + '/assign-system-roles', payload)
 	},
 	getSystemUsers(payload) {
-		return axios.get(VERSION_1 + '/users-with-system-roles', { params: payload })
+		return axios.get('/users-with-system-roles', { params: payload })
 	},
 })

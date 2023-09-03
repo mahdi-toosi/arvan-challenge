@@ -32,6 +32,11 @@ export function gregoryDate(date?: string, mode: 'date' | 'dateTime' | string = 
 		.format(format)
 }
 
+export function formatGregoryDate(date: string, format: string) {
+	if (!date) return ''
+	return dayjs(date).tz(TehranTimeZone).format(format)
+}
+
 export function sleep(milliseconds: number) {
 	return new Promise((resolve) => setTimeout(resolve, milliseconds))
 }

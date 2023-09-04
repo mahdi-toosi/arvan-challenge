@@ -40,7 +40,7 @@ axiosInstance.interceptors.response.use(handleResponse, (error) => {
 		localStorage.clear()
 		localStorage.setItem('redirect', window.location.pathname + window.location.search)
 
-		router.push({ name: 'login' })
+		router.push({ name: 'Login' })
 		return
 	}
 

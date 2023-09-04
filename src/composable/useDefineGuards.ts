@@ -8,8 +8,8 @@ import NProgress from 'nprogress'
 const hasToken = ref(false)
 
 function authGuard(to: RouteLocationNormalized, next: NavigationGuardNext): void {
-	const authenticationPages = ['auth', 'login', 'register']
-	return next()
+	const authenticationPages = ['Auth', 'Login', 'Register']
+
 	if (to.meta.guest) {
 		if (localStorage.getItem('token') && authenticationPages.includes(to.name as string))
 			return next({ name: 'Dashboard' })
@@ -18,7 +18,7 @@ function authGuard(to: RouteLocationNormalized, next: NavigationGuardNext): void
 		return next()
 	} else {
 		localStorage.setItem('redirect', to.fullPath)
-		return next({ path: '/auth' })
+		return next({ name: 'Login' })
 	}
 }
 

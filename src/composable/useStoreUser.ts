@@ -1,12 +1,12 @@
 // ? vue
 import { ref } from 'vue'
 // ? types
-import type { User, AuthResponse } from '@/repositories/auth/types'
+import type { User, AuthResponse } from '@/repositories/users/types'
 
 const user = ref({} as User)
 
 export default () => {
-	if (!user.value.id) {
+	if (!user.value.username) {
 		const _user = localStorage.getItem('user')
 		if (_user) user.value = JSON.parse(_user)
 	}
@@ -15,15 +15,10 @@ export default () => {
 		user,
 
 		setUser(payload: AuthResponse) {
-			localStorage.setItem('token', 'Bearer ' + payload.access_token)
+			localStorage.setItem('token', 'Token ' + payload.user.token)
 
-			const userData = {
-				id: payload.user.id,
-				first_name: payload.user.first_name,
-				last_name: payload.user.last_name,
-				avatar_url: payload.user.avatar_url,
-			}
-			localStorage.setItem('user', JSON.stringify(userData))
+			delete payload.user.token
+			localStorage.setItem('user', JSON.stringify(payload.user))
 			user.value = payload.user
 		},
 	}

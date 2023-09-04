@@ -1,29 +1,32 @@
 <script setup lang="ts">
 // ? vue
-import { computed, defineAsyncComponent, reactive, ref } from 'vue'
+import { computed, defineAsyncComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
 // ? utils
 import useVuelidate from '@vuelidate/core'
-import { useRepositoryContext } from '@/repositories'
 import useStoreUser from '@/composable/useStoreUser'
+import { useRepositoryContext } from '@/repositories'
 import useValidation from '@/composable/useValidations'
 // ? components
 import Password from 'primevue/password'
 import AppLabel from '@/components/AppLabel.vue'
 import AppInput from '@/components/AppInput.vue'
+// ? types
+import type { LoginPayload } from '@/repositories/users/types'
 
 const AppInputErrors = defineAsyncComponent(() => import('@/components/AppInputErrors.vue'))
 
 // ?  define and uses
 const $router = useRouter()
 const { setUser } = useStoreUser()
-const { auth } = useRepositoryContext()
-const { requiredField: password, requiredField: email } = useValidation()
-// ? END define and uses
+const { users } = useRepositoryContext()
 
-const state = ref({ email: '', password: '' })
+const state = ref({} as LoginPayload['user'])
+
+const { requiredField: password, requiredField: email } = useValidation()
 const rules = computed(() => ({ email, password }))
 const $v = useVuelidate(rules, state)
+// ? END define and uses
 
 const loading = ref(false)
 async function onSubmit() {
@@ -31,7 +34,7 @@ async function onSubmit() {
 	if ($v.value.$invalid) return
 
 	loading.value = true
-	const result = await auth.login(state.value)
+	const result = await users.login({ user: state.value })
 	loading.value = false
 	if (!result) return
 

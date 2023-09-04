@@ -52,9 +52,9 @@ axiosInstance.interceptors.response.use(handleResponse, (error) => {
 
 	if (error.response?.data) {
 		const errors = error.response.data.errors
+
 		for (const errorKey in errors) {
-			const err = errors[errorKey]
-			err.forEach((error_msg: string) => showError(error_msg))
+			showError(`${errorKey} ${errors[errorKey]}`)
 		}
 	}
 

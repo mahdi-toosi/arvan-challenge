@@ -8,5 +8,11 @@ export default function (ctx: IContext) {
 			meta: { title: 'Articles', layout: 'default' },
 			component: () => import('./pages/Articles.vue'),
 		},
+		{
+			path: '/articles/edit/:slug',
+			name: 'ArticlesEdit',
+			meta: { title: 'Articles', layout: 'default' },
+			component: () => import('./pages/ArticlesEdit.vue'),
+		},
 	])
 }

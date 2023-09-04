@@ -3,7 +3,6 @@ import { provide, inject } from 'vue'
 import axios from '@/api'
 import type { AxiosInstance } from 'axios'
 
-import auth, { type RAuth } from './auth'
 import users, { type RUsers } from './users'
 import articles, { type RArticles } from './articles'
 
@@ -24,9 +23,6 @@ function lazyBind<T>(repoFactory: any, repoInterface: T, axios: AxiosInstance) {
 
 export default function repositoryContainer(axios: AxiosInstance) {
 	return {
-		get auth() {
-			return lazyBind<RAuth>(() => import('./auth'), auth(axios), axios)
-		},
 		get users() {
 			return lazyBind<RUsers>(() => import('./users'), users(axios), axios)
 		},

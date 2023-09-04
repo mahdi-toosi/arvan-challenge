@@ -40,8 +40,9 @@ async function onSubmit() {
 	if (!result) return
 
 	showToast({
-		detail: `Well done! Article ${article.value.slug ? 'updated' : 'created'} successfully`,
 		severity: 'success',
+		boldMsg: 'Well done!',
+		msg: `Article ${article.value.slug ? 'updated' : 'created'} successfully`,
 	})
 
 	emit('stored')

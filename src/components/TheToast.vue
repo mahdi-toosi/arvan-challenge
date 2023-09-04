@@ -6,26 +6,35 @@ import useStoreToast from '@/composable/useStoreToast'
 import { useToast } from 'primevue/usetoast'
 // ? components
 import Toast from 'primevue/toast'
+// ? types
+import type { ToastMessageOptions } from 'primevue/toast'
 
 const timerId = ref(0)
 const $toast = useToast()
 const { toast: toastState, showToast } = useStoreToast()
 
 watch(toastState, (value) => {
-	if (!value.detail) return
+	if (!value.msg) return
+
 	$toast.add({
-		severity: toastState.value.severity,
-		detail: toastState.value.detail,
 		life: toastState.value.life,
-	})
+		detail: toastState.value.msg,
+		severity: toastState.value.severity,
+		boldMsg: toastState.value.boldMsg,
+	} as ToastMessageOptions)
+
 	timerId.value = window.setTimeout(() => {
-		showToast({ detail: '' })
+		showToast({ msg: '' })
 		clearTimeout(timerId.value)
 	}, toastState.value.life)
 })
 </script>
 <template>
-	<Toast position="bottom-left" />
+	<Toast position="top-right" style="top: 70px !important">
+		<template #message="{ message }">
+			<div><b v-text="message.boldMsg" /> {{ message.detail }}</div>
+		</template>
+	</Toast>
 </template>
 
 <style>
@@ -41,11 +50,15 @@ watch(toastState, (value) => {
 }
 
 .p-toast-message-content {
-	@apply border-0 justify-center !important;
+	@apply border-0  !important;
 }
 
 .p-toast-message-icon,
 .p-toast-icon-close {
-	@apply hidden;
+	@apply hidden !important;
+}
+
+.p-toast .p-toast-message {
+	border-width: 1px !important;
 }
 </style>

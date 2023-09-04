@@ -47,7 +47,7 @@ axiosInstance.interceptors.response.use(handleResponse, (error) => {
 	let sended = 0
 	function showError(msg: string) {
 		++sended
-		showToast({ detail: msg })
+		showToast({ msg })
 	}
 
 	if (error.response?.data) {

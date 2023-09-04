@@ -76,20 +76,20 @@ th {
 .p-datatable .p-datatable-loading-overlay p {
 	@apply rounded-md;
 
-	background-color: #b1b1b1;
+	background-color: #b1b1b1cb;
 	padding: 4px 8px;
 	animation: fade 1.5s ease-in-out infinite;
 }
 
 @keyframes fade {
 	0% {
-		background-color: #b1b1b1; /* Dim */
+		background-color: #b1b1b1b0; /* Dim */
 	}
 	50% {
-		background-color: #cfcfcf; /* Bold */
+		background-color: #cfcfcfb0; /* Bold */
 	}
 	100% {
-		background-color: #b1b1b1; /* Dim */
+		background-color: #b1b1b1b0; /* Dim */
 	}
 }
 
@@ -126,3 +126,24 @@ button[type='submit'] {
 }
 
 /* * END generic prime Split button  */
+
+.p-dialog-header {
+	border-bottom: #ddd solid 1px !important;
+}
+
+.p-dialog-content {
+	padding: 1.5rem 1.5rem 2.5rem 1.5rem !important;
+	border-bottom: #ddd solid 1px !important;
+}
+
+.p-confirm-dialog {
+	min-width: 500px;
+}
+
+.p-dialog-footer button {
+	padding: 0.5rem 1.5rem;
+}
+
+.p-confirm-dialog-reject {
+	border: solid 1px #ddd !important;
+}

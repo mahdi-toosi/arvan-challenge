@@ -1,20 +1,23 @@
 // ? vue
 import { ref } from 'vue'
 // ? types
+import type { ToastMessageOptions } from 'primevue/toast'
+
 type TheToast = {
-	severity?: 'success' | 'info' | 'warn' | 'error'
 	life?: number
-	detail?: string
+	msg?: string
+	boldMsg?: string
+	severity?: ToastMessageOptions['severity']
 }
 
-const toast = ref({ severity: 'error', detail: '', life: 3000 } as TheToast)
+const toast = ref({} as TheToast)
 
 export default () => {
 	return {
 		toast,
 
 		showToast: (new_toast: TheToast) => {
-			const defaultToast = { severity: 'error', detail: '', life: 3000 } as TheToast
+			const defaultToast = { life: 3000, severity: 'error' } as TheToast
 			toast.value = { ...defaultToast, ...new_toast }
 		},
 	}

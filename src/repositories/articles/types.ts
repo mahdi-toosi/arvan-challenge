@@ -1,11 +1,11 @@
 import type { Res } from '../types'
 
 export interface Article {
+	body: string
 	slug?: string
 	title: string
-	body?: string
-	createdAt?: string
 	tagList?: string[]
+	createdAt?: string
 	favorited: boolean
 	description: string
 	favoritesCount: number
@@ -20,7 +20,10 @@ export interface Article {
 export interface RArticles {
 	// ! articles
 	getArticles(): Res<{ articles: Article[]; articlesCount: number }>
-	insertArticle(payload: Article): Res<Article>
-	updateArticle(payload: Article): Res<Article>
+	getArticle(slug: string): Res<{ article: Article }>
+	putArticle(payload: { article: Article }): Res
 	deleteArticle(slug: string): Res
+
+	// ! articles
+	getTags(): Res<{ tags: string[] }>
 }

@@ -3,19 +3,26 @@ import type { RArticles } from './types'
 export type { RArticles }
 
 const articlesService = '/articles'
+const tagsService = '/tags'
 
 export default (axios: AxiosInstance): RArticles => ({
 	// ! articles
 	getArticles() {
 		return axios.get(articlesService)
 	},
-	insertArticle(payload) {
-		return axios.post(articlesService, payload)
+	getArticle(slug) {
+		return axios.get(`${articlesService}/${slug}`)
 	},
-	updateArticle(payload) {
-		return axios.patch(`${articlesService}/${payload.slug}`, payload)
+	putArticle(payload) {
+		if (payload.slug) return axios.put(`${articlesService}/${payload.slug}`, payload)
+		else return axios.post(articlesService, payload)
 	},
 	deleteArticle(slug) {
 		return axios.delete(`${articlesService}/${slug}`)
+	},
+
+	// ! tags
+	getTags() {
+		return axios.get(tagsService)
 	},
 })

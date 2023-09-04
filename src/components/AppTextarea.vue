@@ -9,7 +9,7 @@ import type { InputErrorMessages } from '@/components/AppInputErrors.vue'
 const AppLabel = defineAsyncComponent(() => import('@/components/AppLabel.vue'))
 const AppInputErrors = defineAsyncComponent(() => import('@/components/AppInputErrors.vue'))
 
-const { placeholder = 'وارد کنید' } = defineProps<{
+defineProps<{
 	cols?: string
 	rows?: string
 	label?: string
@@ -27,7 +27,7 @@ const model = defineModel<string>()
 
 <template>
 	<div class="app_textarea">
-		<AppLabel :label="label" :required="required" />
+		<AppLabel :label="label" :required="required" :invalid="errors?.length" />
 
 		<Skeleton v-if="loading" class="w-full" :height="loadingHeight" />
 

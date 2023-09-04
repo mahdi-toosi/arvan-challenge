@@ -12,14 +12,19 @@ const AppInputErrors = defineAsyncComponent(() => import('@/components/AppInputE
 defineProps<{
 	icon?: string
 	label?: string
-	loading?: boolean
 	number?: boolean
+	loading?: boolean
 	required?: boolean
 	disabled?: boolean
 	placeholder?: string
 	inputClasses?: string
 	errors?: InputErrorMessages
 }>()
+const emit = defineEmits<{ (event: 'enter', payload: KeyboardEvent): void }>()
+
+function onEnter(event: KeyboardEvent) {
+	emit('enter', event)
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const model = defineModel<any>()
@@ -31,7 +36,7 @@ const model = defineModel<any>()
 
 		<span :class="['w-full', { 'p-input-icon-right': icon }]">
 			<i :class="icon"></i>
-			<Skeleton v-if="loading" v-bind="$attrs" class="w-full" height="36px" />
+			<Skeleton v-if="loading" v-bind="$attrs" class="w-full" height="40px" />
 
 			<InputText
 				v-else
@@ -52,6 +57,7 @@ const model = defineModel<any>()
 						'p-invalid': errors && errors.length,
 					},
 				]"
+				@keyup.enter="onEnter"
 			/>
 		</span>
 

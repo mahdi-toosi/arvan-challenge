@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // ? vue
 import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 // ? utils
 import { useConfirm } from 'primevue/useconfirm'
 import { useRepositoryContext } from '@/repositories'
@@ -13,6 +14,7 @@ import type { Article } from '@/repositories/articles/types'
 import type { Action } from '@/components/AppTableSplitBtn.vue'
 
 // ? define and uses
+const $router = useRouter()
 const $confirm = useConfirm()
 const { showToast } = useStoreToast()
 const { articles } = useRepositoryContext()
@@ -21,6 +23,13 @@ const { emptyMsg, tableProps, loadingMsg, updateTableProps } = useStoreTableFilt
 
 function setActions(article: Article) {
 	const actions = [] as Action[]
+
+	const editAction = {
+		label: 'Edit',
+		command: () => {
+			$router.push({ name: 'ArticleEdit', params: { slug: article.slug } })
+		},
+	}
 
 	const deleteAction = {
 		label: 'Delete',
@@ -45,7 +54,7 @@ function setActions(article: Article) {
 		},
 	}
 
-	actions.push(deleteAction)
+	actions.push(editAction, deleteAction)
 	return actions
 }
 

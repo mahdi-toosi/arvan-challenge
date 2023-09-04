@@ -11,7 +11,7 @@ import type { SidebarItem } from 'vue-sidebar-menu'
 const { sidebarIsCollapsed, onSidebarCollapsed } = useStoreTheme()
 
 const menu = ref([
-	{ title: 'All Articles', href: '' },
+	{ title: 'All Articles', href: '/articles' },
 	{ title: 'New Article', href: '' },
 ] as SidebarItem[])
 
@@ -79,6 +79,7 @@ onMounted(() => {
 }
 
 :deep(.vsm--link_active[aria-current='page']) {
+	background-color: rgba(255, 255, 255, 0.15) !important;
 	pointer-events: none;
 }
 
@@ -116,7 +117,7 @@ onMounted(() => {
 }
 
 :deep(.vsm--link_active) {
-	box-shadow: inset -3px 0 0 0 #8b94a7 !important;
+	box-shadow: unset !important;
 }
 
 @media (min-width: 640px) {

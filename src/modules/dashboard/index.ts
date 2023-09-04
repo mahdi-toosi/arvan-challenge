@@ -5,8 +5,7 @@ export default function (ctx: IContext) {
 		{
 			path: '/',
 			name: 'Dashboard',
-			meta: { title: 'Dashboard', layout: 'default' },
-			component: () => import('./pages/index.vue'),
+			redirect: { name: 'Articles' },
 		},
 		{
 			path: '/forbidden',

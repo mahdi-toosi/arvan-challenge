@@ -25,7 +25,7 @@ function onLogout() {
 
 			<h3>Arvan Challenge</h3>
 
-			<h4>Welcome {{ user.first_name }} {{ user.last_name }}</h4>
+			<h4 class="hidden md:block">Welcome {{ user.username }}</h4>
 		</div>
 
 		<Button label="Logout" outlined @click="onLogout" />

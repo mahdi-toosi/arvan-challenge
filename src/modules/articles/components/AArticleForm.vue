@@ -69,7 +69,7 @@ onMounted(() => {
 </script>
 
 <template>
-	<form class="flex gap-8" @submit.prevent="onSubmit">
+	<form class="flex gap-4 md:gap-8 flex-col md:flex-row" @submit.prevent="onSubmit">
 		<div class="flex flex-col gap-5 flex-1">
 			<AppInput
 				v-model="article.title"
@@ -89,14 +89,14 @@ onMounted(() => {
 				:errors="$v.body.$errors"
 			/>
 
-			<Button type="submit" label="Submit" class="w-24" :loading="submitLoading" />
+			<Button type="submit" label="Submit" class="hidden md:block w-24" :loading="submitLoading" />
 		</div>
 
 		<div style="min-width: 200px">
 			<AppInput
 				v-model="newTag"
 				label="Tags"
-				class="mb-6"
+				class="mb-2 md:mb-6"
 				:loading="loading"
 				placeholder="New tag"
 				@enter="onAddNewTag"
@@ -119,6 +119,8 @@ onMounted(() => {
 				</template>
 			</div>
 		</div>
+
+		<Button type="submit" label="Submit" class="md:hidden block w-24" :loading="submitLoading" />
 	</form>
 </template>
 

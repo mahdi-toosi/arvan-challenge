@@ -2,6 +2,7 @@
 // ? vue
 import { onMounted, ref } from 'vue'
 // ? utils
+import { useDebounceFn } from '@/composable/useDebounceFn'
 import useStoreTheme from '@/modules/dashboard/composable/useStoreTheme'
 // ? components
 import { SidebarMenu } from 'vue-sidebar-menu'
@@ -16,17 +17,17 @@ const menu = ref([
 ] as SidebarItem[])
 
 const windowWidth = ref(window.innerWidth)
-window.onresize = () => {
+window.onresize = useDebounceFn(() => {
 	windowWidth.value = window.innerWidth
-}
+	onSidebarCollapsed(window.innerWidth < 640)
+}, 100)
 
 function onItemClicked(_event: Event, item: SidebarItem) {
 	if (item.href && !Array.isArray(item.child) && windowWidth.value < 640) onSidebarCollapsed(true)
 }
 
 onMounted(() => {
-	const sidebarStatus = localStorage.getItem('sidebarStatus')
-	if (windowWidth.value > 640) onSidebarCollapsed(sidebarStatus === '1' ? true : false)
+	onSidebarCollapsed(false)
 })
 </script>
 <template>
@@ -94,8 +95,6 @@ onMounted(() => {
 
 .v-sidebar-menu {
 	@apply h-screen;
-
-	max-height: calc(100vh - 64px) !important; /* reduce header */
 }
 
 .v-sidebar-menu.vsm_collapsed {
@@ -121,6 +120,10 @@ onMounted(() => {
 }
 
 @media (min-width: 640px) {
+	.v-sidebar-menu {
+		max-height: calc(100vh - 64px) !important; /* reduce header */
+	}
+
 	.v-sidebar-menu {
 		top: 0 !important;
 	}

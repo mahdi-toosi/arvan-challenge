@@ -12,7 +12,7 @@ const { sidebarIsCollapsed, onSidebarCollapsed } = useStoreTheme()
 
 const menu = ref([
 	{ title: 'All Articles', href: '/articles' },
-	{ title: 'New Article', href: '' },
+	{ title: 'New Article', href: '/articles/create' },
 ] as SidebarItem[])
 
 const windowWidth = ref(window.innerWidth)

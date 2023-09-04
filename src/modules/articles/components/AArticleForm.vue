@@ -49,6 +49,8 @@ async function onSubmit() {
 }
 
 function onAddNewTag() {
+	if (!newTag.value.length) return
+
 	tags.value.push(newTag.value)
 	article.value.tagList?.push(newTag.value)
 	newTag.value = ''
@@ -69,7 +71,7 @@ onMounted(() => {
 </script>
 
 <template>
-	<form class="flex gap-4 md:gap-8 flex-col md:flex-row" @submit.prevent="onSubmit">
+	<section class="flex gap-4 md:gap-8 flex-col md:flex-row">
 		<div class="flex flex-col gap-5 flex-1">
 			<AppInput
 				v-model="article.title"
@@ -89,7 +91,13 @@ onMounted(() => {
 				:errors="$v.body.$errors"
 			/>
 
-			<Button type="submit" label="Submit" class="hidden md:block w-24" :loading="submitLoading" />
+			<Button
+				type="submit"
+				label="Submit"
+				:loading="submitLoading"
+				class="hidden md:block w-24"
+				@click="onSubmit"
+			/>
 		</div>
 
 		<div style="min-width: 200px">
@@ -120,8 +128,14 @@ onMounted(() => {
 			</div>
 		</div>
 
-		<Button type="submit" label="Submit" class="md:hidden block w-24" :loading="submitLoading" />
-	</form>
+		<Button
+			type="submit"
+			label="Submit"
+			:loading="submitLoading"
+			class="md:hidden block w-24"
+			@click="onSubmit"
+		/>
+	</section>
 </template>
 
 <style scoped>

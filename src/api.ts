@@ -24,7 +24,7 @@ function handleRequest(config: AxiosRequestConfig) {
 }
 
 function handleResponse(response: AxiosResponse) {
-	return response.data
+	return response.data || 'success'
 }
 
 axiosInstance.interceptors.request.use(handleRequest)
@@ -59,6 +59,8 @@ axiosInstance.interceptors.response.use(handleResponse, (error) => {
 	}
 
 	if (!sended) showError(error.response?.data.message || error.message)
+
+	return false
 })
 
 export default axiosInstance

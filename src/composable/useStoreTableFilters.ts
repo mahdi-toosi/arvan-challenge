@@ -105,7 +105,6 @@ export default function useStoreTableFilters(payload = { withSort: false }) {
 		const obj = {
 			...defaultTableProps.value,
 			rowHover: true,
-			stripedRows: true,
 			rowsPerPageOptions: rowsOptions,
 			rows: Number($route.query.itemPerPage) || 0,
 			first: calcFirstItemIndex(Number($route.query.page), Number($route.query.itemPerPage)),

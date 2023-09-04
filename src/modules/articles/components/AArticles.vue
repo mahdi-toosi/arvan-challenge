@@ -2,15 +2,52 @@
 // ? vue
 import { onMounted } from 'vue'
 // ? utils
+import { useConfirm } from 'primevue/useconfirm'
 import { useRepositoryContext } from '@/repositories'
+import useStoreToast from '@/composable/useStoreToast'
 import { formatGregoryDate } from '@/composable/useUtils'
+import AppTableSplitBtn from '@/components/AppTableSplitBtn.vue'
 import useStoreTableFilters from '@/composable/useStoreTableFilters'
 // ? types
+import type { Article } from '@/repositories/articles/types'
+import type { Action } from '@/components/AppTableSplitBtn.vue'
 
 // ? define and uses
+const $confirm = useConfirm()
+const { showToast } = useStoreToast()
 const { articles } = useRepositoryContext()
 const { emptyMsg, tableProps, loadingMsg, updateTableProps } = useStoreTableFilters()
 // ? End define and uses
+
+function setActions(article: Article) {
+	const actions = [] as Action[]
+
+	const deleteAction = {
+		label: 'Delete',
+		command: () => {
+			$confirm.require({
+				message: 'Are you sure to delete Article?',
+				header: 'Delete Article',
+				acceptClass: 'p-button-danger',
+				rejectClass: 'p-button-text p-button-secondary',
+				acceptLabel: 'Yes',
+				rejectLabel: 'No',
+				accept: async () => {
+					updateTableProps({ loading: true })
+					const result = await articles.deleteArticle(article.slug as string)
+					updateTableProps({ loading: false })
+					if (!result) return
+
+					showToast({ detail: 'Article deleted successfully', severity: 'success', life: 999999 })
+					getArticles()
+				},
+			})
+		},
+	}
+
+	actions.push(deleteAction)
+	return actions
+}
 
 async function getArticles() {
 	updateTableProps({ loading: true })
@@ -61,6 +98,12 @@ onMounted(() => {
 		<Column header="Created">
 			<template #body="{ data }">
 				{{ formatGregoryDate(data.createdAt, 'MMM D ,YYYY') }}
+			</template>
+		</Column>
+
+		<Column>
+			<template #body="{ data }">
+				<AppTableSplitBtn :actions="setActions(data)" />
 			</template>
 		</Column>
 	</DataTable>

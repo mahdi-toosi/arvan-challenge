@@ -13,9 +13,9 @@ export default (axios: AxiosInstance): RArticles => ({
 		return axios.post(articlesService, payload)
 	},
 	updateArticle(payload) {
-		return axios.patch(`${articlesService}/${payload.id}`, payload)
+		return axios.patch(`${articlesService}/${payload.slug}`, payload)
 	},
-	deleteArticle(id) {
-		return axios.delete(`${articlesService}/${id}`)
+	deleteArticle(slug) {
+		return axios.delete(`${articlesService}/${slug}`)
 	},
 })

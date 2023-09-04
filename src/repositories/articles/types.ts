@@ -1,8 +1,7 @@
 import type { Res } from '../types'
 
 export interface Article {
-	id?: number
-	slug: string
+	slug?: string
 	title: string
 	body?: string
 	createdAt?: string
@@ -23,5 +22,5 @@ export interface RArticles {
 	getArticles(): Res<{ articles: Article[]; articlesCount: number }>
 	insertArticle(payload: Article): Res<Article>
 	updateArticle(payload: Article): Res<Article>
-	deleteArticle(id: number): Res
+	deleteArticle(slug: string): Res
 }

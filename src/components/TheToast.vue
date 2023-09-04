@@ -25,26 +25,27 @@ watch(toastState, (value) => {
 })
 </script>
 <template>
-	<Toast position="top-right" />
+	<Toast position="bottom-left" />
 </template>
 
-<style scoped>
-:global(.p-toast) {
+<style>
+.p-toast {
 	@apply w-[22rem] md:w-96;
 }
 
-:global(.p-toast-message-text) {
-	@apply m-0 mr-4 !important;
-}
-
-:global(.p-toast .p-toast-message .p-toast-message-content .p-toast-detail) {
+.p-toast .p-toast-message .p-toast-message-content .p-toast-detail {
 	@apply mt-0  !important;
 
 	max-width: 16rem;
 	word-break: break-word;
 }
 
-:global(.p-toast-message-content) {
+.p-toast-message-content {
 	@apply border-0 justify-center !important;
+}
+
+.p-toast-message-icon,
+.p-toast-icon-close {
+	@apply hidden;
 }
 </style>

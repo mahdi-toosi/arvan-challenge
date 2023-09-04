@@ -4,7 +4,7 @@ $primaryDarkerColor: #1a6dbb;
 
 //reused color variables
 $shade000: #ffffff !default; //surface
-$shade100: #f8f9fa !default; //header background
+$shade100: #eceeef !default; //header background
 $shade200: #e9ecef !default; //hover background
 $shade300: #dee2e6 !default; //border, divider
 $shade400: #ddd !default; //input border
@@ -143,15 +143,15 @@ $secondaryButtonTextActiveColor: $secondaryButtonTextColor !default;
 $secondaryButtonActiveBorderColor: #334155 !default;
 $secondaryButtonFocusShadow: 0 0 0 0.2rem #E2E8F0 !default;
 
-$infoButtonBg: #0E95EF !default;
+$infoButtonBg: #5bc0de !default;
 $infoButtonTextColor: #ffffff !default;
 $infoButtonBorder: 1px solid $infoButtonBg !default;
-$infoButtonHoverBg: #0c80ce !default;
+$infoButtonHoverBg: #4facc8 !default;
 $infoButtonTextHoverColor: $infoButtonTextColor !default;
-$infoButtonHoverBorderColor: #2563EB !default;
-$infoButtonActiveBg: #1D4ED8 !default;
+$infoButtonHoverBorderColor: #4facc8 !default;
+$infoButtonActiveBg: #489db7 !default;
 $infoButtonTextActiveColor: $infoButtonTextColor !default;
-$infoButtonActiveBorderColor: #1D4ED8 !default;
+$infoButtonActiveBorderColor: #489db7 !default;
 $infoButtonFocusShadow: 0 0 0 0.2rem #BFDBFE !default;
 
 $successButtonBg: #5cb85c !default;
@@ -187,15 +187,15 @@ $helpButtonTextActiveColor: $helpButtonTextColor !default;
 $helpButtonActiveBorderColor: #7E22CE !default;
 $helpButtonFocusShadow: 0 0 0 0.2rem #E9D5FF !default;
 
-$dangerButtonBg: #FF4C6A !default;
+$dangerButtonBg: #cb2e25 !default;
 $dangerButtonTextColor: #ffffff !default;
 $dangerButtonBorder: 1px solid $dangerButtonBg !default;
-$dangerButtonHoverBg: #e6445f !default;
+$dangerButtonHoverBg: #bb2b23 !default;
 $dangerButtonTextHoverColor: $dangerButtonTextColor !default;
-$dangerButtonHoverBorderColor: #DC2626 !default;
-$dangerButtonActiveBg: #B91C1C !default;
+$dangerButtonHoverBorderColor: #bb2b23 !default;
+$dangerButtonActiveBg: #aa2821 !default;
 $dangerButtonTextActiveColor: $dangerButtonTextColor !default;
-$dangerButtonActiveBorderColor: #B91C1C !default;
+$dangerButtonActiveBorderColor: #aa2821 !default;
 $dangerButtonFocusShadow: 0 0 0 0.2rem #FECACA !default;
 
 $linkButtonColor: $primaryDarkerColor !default;
@@ -599,10 +599,10 @@ $dialogHeaderBorder: 0 none !default;
 $dialogHeaderTextColor: $shade800 !default;
 $dialogHeaderFontWeight: 700 !default;
 $dialogHeaderFontSize: 1.25rem !default;
-$dialogHeaderPadding: 1.5rem !default;
+$dialogHeaderPadding: 1rem 1.5rem !default;
 $dialogContentPadding: 0 1.5rem 2rem 1.5rem !default;
 $dialogFooterBorder: 0 none !default;
-$dialogFooterPadding: 0 1.5rem 1.5rem 1.5rem !default;
+$dialogFooterPadding: 1.5rem 1.5rem 1.5rem 1.5rem !default;
 
 //confirmpopup
 $confirmPopupContentPadding: $panelContentPadding !default;
